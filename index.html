@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Hamit Efe Çınar - Computer Science and Engineering Student. Research interests in Knowledge Representation and Reasoning, Multi-Agent Systems, and Algorithm Design.">
+  <meta name="keywords" content="Hamit Efe Çınar, Computer Science, Knowledge Representation, Multi-Agent Systems, Sabancı University">
+  <meta name="author" content="Hamit Efe Çınar">
+  
+  <!-- Open Graph / Social Media -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Hamit Efe Çınar">
+  <meta property="og:description" content="Computer Science and Engineering Student specializing in Knowledge Representation and Reasoning">
+  
+  <title>Hamit Efe Çınar Personal Website</title>
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="favicon.ico">
+  
+  <!-- Google Fonts for Logo -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+  
+  <!-- Navigation -->
+  <nav>
+    <div class="nav-container">
+      <a href="index.html" class="nav-brand">Efe Çınar</a>
+      <button class="mobile-menu-toggle" aria-label="Toggle menu">
+        <span>☰</span>
+      </button>
+      <ul class="nav-menu">
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="academic.html">Academic Experiences</a></li>
+        <li><a href="personal.html">Personal</a></li>
+        <li class="dropdown">
+          <span class="dropdown-toggle">CV & Transcript ▾</span>
+          <div class="dropdown-menu">
+            <a href="assets/CV_HamitEfeCinar.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Curriculum Vitae</a>
+            <a href="assets/Transcript_HamitEfeCinar.pdf" target="_blank"><i class="fas fa-file-alt"></i> Transcript</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-image">
+          <img src="images/profile.jpg" alt="Hamit Efe Çınar" onerror="this.src='https://via.placeholder.com/280x280/1e3a8a/ffffff?text=HEÇ'">
+        </div>
+        <div class="hero-text">
+          <h1>Hamit Efe Çınar</h1>
+          <p class="hero-subtitle">Undergraduate Student at Sabancı University</p>
+          <p class="hero-description">
+            I am a senior undergraduate student at Sabancı University pursuing a double major in Computer Science and Engineering 
+            and Industrial Engineering, with minors in Mathematics and Business Analytics. <a href="#research-interests" class="research-link">My research interests</a> lie in 
+            <strong>Knowledge Representation and Reasoning</strong>, 
+            <strong>Multi-Agent Systems</strong>, 
+            <strong>Algorithm Design and Analysis</strong>.
+          </p>
+          <div class="hero-contact">
+            <a href="mailto:efe.cinar@sabanciuniv.edu" onclick="copyEmail('efe.cinar@sabanciuniv.edu'); return false;">
+              <i class="fas fa-envelope"></i> efe.cinar@sabanciuniv.edu
+            </a>
+            <a href="https://github.com/odulsuzkisafilm" target="_blank">
+              <i class="fab fa-github"></i> github.com/odulsuzkisafilm
+            </a>
+            <a href="https://www.linkedin.com/in/efe-cinar" target="_blank">
+              <i class="fab fa-linkedin"></i> linkedin.com/in/efe-cinar
+            </a>
+          </div>
+          <div class="hero-buttons">
+            <a href="assets/CV_HamitEfeCinar.pdf" class="btn btn-primary" target="_blank">
+              <i class="fas fa-file-pdf"></i> Download CV
+            </a>
+            <a href="publications.html" class="btn btn-secondary">
+              <i class="fas fa-book"></i> View Publications
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="section" style="background-color: white;">
+    <div class="container">
+      <h2 class="section-title">Education</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h3 class="timeline-title">Sabancı University</h3>
+              <p class="timeline-location">Istanbul, Turkey</p>
+            </div>
+            <span class="timeline-date">2021 - Expected June 2026</span>
+          </div>
+          <p class="timeline-subtitle">
+            <strong>B.S. in Computer Science and Engineering</strong>, Minor in Mathematics<br>
+            <strong>B.S. in Industrial Engineering</strong>, Minor in Business Analytics<br>
+            <em>Full Tuition Scholarship</em>
+          </p>
+          <div class="timeline-content">
+            <ul>
+              <li><strong>GPA: 3.97/4.00</strong>
+            </ul>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-header">
+            <div>
+              <h3 class="timeline-title">Uppsala University</h3>
+              <p class="timeline-location">Uppsala, Sweden</p>
+            </div>
+            <span class="timeline-date">Jan 2024 - June 2024</span>
+          </div>
+          <p class="timeline-subtitle">
+            <strong>Erasmus Exchange Program</strong><br>
+            Computer Science and Mathematics
+          </p>
+          <div class="timeline-content">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Research Interests -->
+  <section class="section" id="research-interests">
+    <div class="container">
+      <h2 class="section-title">Research Interests</h2>
+      <div class="grid-2">
+        <div class="card" id="krr">
+          <h3 class="card-title"><i class="fas fa-brain"></i> Knowledge Representation and Reasoning</h3>
+          <p class="card-description">
+            Formal methods for representing knowledge and enabling automated reasoning through logic-based 
+            representations and symbolic systems. Interested in the theoretical foundations of how knowledge 
+            can be structured to enable intelligent behavior, and in integrating symbolic reasoning with 
+            learning-based AI to enhance explainability and interpretability.
+          </p>
+        </div>
+        <div class="card" id="mas">
+          <h3 class="card-title"><i class="fas fa-users"></i> Multi-Agent Systems</h3>
+          <p class="card-description">
+            Coordination, communication, and collaborative planning among autonomous agents. Focused on how 
+            multiple agents interact, share knowledge, and make decisions collectively. Interested in 
+            decentralized control, collective intelligence, and mechanisms for fair and effective multi-agent 
+            coordination.
+          </p>
+        </div>
+        <div class="card" id="algorithms">
+          <h3 class="card-title"><i class="fas fa-project-diagram"></i> Algorithm Design and Analysis</h3>
+          <p class="card-description">
+            Design and theoretical analysis of efficient algorithms for solving computational problems. Interested 
+            in combinatorial optimization, constraint satisfaction problems, graph algorithms, and developing algorithmic solutions with provable 
+            guarantees on correctness and efficiency.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Awards Section -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Awards & Honors</h2>
+      <ul class="awards-list">
+        <li class="award-item">
+          <span class="award-title">Top 5 GPA, Computer Science and Engineering Department, Sabancı University</span>
+          <span class="award-year">2025</span>
+        </li>
+        <li class="award-item">
+          <span class="award-title">Highest GPA, Industrial Engineering Department, Sabancı University</span>
+          <span class="award-year">2025</span>
+        </li>
+        <li class="award-item">
+          <span class="award-title">TUBITAK Undergraduate Scholarship, Research Trainee on a TUBITAK-funded project with monthly stipend</span>
+          <span class="award-year">Aug 2023 – Jan 2024</span>
+        </li>
+        <li class="award-item">
+          <span class="award-title">Dean's List: High Honor (All Semesters)</span>
+          <span class="award-year">2021-Present</span>
+        </li>
+        <li class="award-item">
+          <span class="award-title">Full Tuition Scholarship, Sabancı University</span>
+          <span class="award-year">2021</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-content">
+      <div>
+        <p>&copy; <span class="current-year">2025</span> Hamit Efe Çınar. All rights reserved.</p>
+      </div>
+      <ul class="footer-links">
+        <li><a href="publications.html">Publications</a></li>
+        <li><a href="academic.html">Academic Experiences</a></li>
+        <li><a href="personal.html">Personal</a></li>
+      </ul>
+      <div class="footer-social">
+        <a href="mailto:efe.cinar@sabanciuniv.edu" class="social-icon" title="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://github.com/odulsuzkisafilm" target="_blank" class="social-icon" title="GitHub">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/efe-cinar" target="_blank" class="social-icon" title="LinkedIn">
+          <i class="fab fa-linkedin"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- JavaScript -->
+  <script src="js/main.js"></script>
+</body>
+</html>
+
