@@ -49,10 +49,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const targetPosition = target.getBoundingClientRect().top + window.pageYOffset;
         const offsetPosition = targetPosition - 100; // Account for sticky nav
         
-        // Custom smooth scroll with slower speed
-        const startPosition = window.pageYOffset;
+        // Custom smooth scroll with slower speed - consistent across browsers
+        const startPosition = window.pageYOffset || window.scrollY;
         const distance = offsetPosition - startPosition;
-        const duration = Math.abs(distance) * 1.5; // Slower: 1.5ms per pixel
+        const duration = Math.max(800, Math.abs(distance) * 1.2); // Minimum 800ms, 1.2ms per pixel
         let start = null;
         
         function step(timestamp) {
@@ -60,15 +60,25 @@ document.addEventListener('DOMContentLoaded', function() {
           const progress = timestamp - start;
           const percentage = Math.min(progress / duration, 1);
           
-          // Easing function for smooth deceleration
-          const ease = percentage < 0.5 
-            ? 2 * percentage * percentage 
+          // Easing function for smooth deceleration (ease-in-out)
+          const ease = percentage < 0.5
+            ? 2 * percentage * percentage
             : 1 - Math.pow(-2 * percentage + 2, 2) / 2;
           
-          window.scrollTo(0, startPosition + distance * ease);
+          const currentPosition = startPosition + distance * ease;
+          window.scrollTo({
+            top: currentPosition,
+            behavior: 'auto' // Disable native smooth scroll
+          });
           
           if (progress < duration) {
             window.requestAnimationFrame(step);
+          } else {
+            // Ensure we end at the exact target position
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'auto'
+            });
           }
         }
         
