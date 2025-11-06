@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://efe-cinar.com/sitemap.xml
+
