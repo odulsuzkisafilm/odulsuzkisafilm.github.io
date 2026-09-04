@@ -126,60 +126,40 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-// Function to copy email to clipboard
-function copyEmail(email) {
-  navigator.clipboard.writeText(email).then(function() {
-    // Show a temporary notification
-    const notification = document.createElement('div');
-    notification.textContent = 'Email copied to clipboard!';
-    notification.style.cssText = `
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background-color: #06b6d4;
-      color: white;
-      padding: 1rem 1.5rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      z-index: 10000;
-      animation: slideIn 0.3s ease;
-    `;
-    
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.style.animation = 'slideOut 0.3s ease';
-      setTimeout(() => notification.remove(), 300);
-    }, 2000);
-  }).catch(function(err) {
-    console.error('Failed to copy email: ', err);
-  });
-}
+// Block copying of elements marked .no-copy (e.g. the contact address)
+(function() {
+  function isInNoCopy(node) {
+    const element = node instanceof Element ? node : node?.parentElement;
+    return Boolean(element && element.closest('.no-copy'));
+  }
 
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes slideIn {
-    from {
-      transform: translateX(400px);
-      opacity: 0;
+  function selectionTouchesNoCopy() {
+    const selection = window.getSelection();
+    if (!selection || selection.rangeCount === 0) return false;
+
+    const guarded = document.querySelectorAll('.no-copy');
+    for (let i = 0; i < selection.rangeCount; i++) {
+      const range = selection.getRangeAt(i);
+      if (isInNoCopy(range.commonAncestorContainer)) return true;
+      for (const element of guarded) {
+        if (range.intersectsNode(element)) return true;
+      }
     }
-    to {
-      transform: translateX(0);
-      opacity: 1;
-    }
+    return false;
   }
-  
-  @keyframes slideOut {
-    from {
-      transform: translateX(0);
-      opacity: 1;
-    }
-    to {
-      transform: translateX(400px);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(style);
+
+  ['copy', 'cut'].forEach(function(type) {
+    document.addEventListener(type, function(event) {
+      if (isInNoCopy(event.target) || selectionTouchesNoCopy()) {
+        event.preventDefault();
+      }
+    });
+  });
+
+  ['contextmenu', 'dragstart'].forEach(function(type) {
+    document.addEventListener(type, function(event) {
+      if (isInNoCopy(event.target)) event.preventDefault();
+    });
+  });
+})();
 

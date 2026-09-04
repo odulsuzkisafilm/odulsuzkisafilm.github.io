@@ -350,7 +350,8 @@ nav {
   margin-top: var(--spacing-md);
 }
 
-.hero-contact a {
+.hero-contact a,
+.hero-contact span {
   color: var(--white);
   font-size: 1rem;
   display: flex;
@@ -900,6 +901,14 @@ footer p {
 
 .text-center {
   text-align: center;
+}
+
+.no-copy {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 
 .mb-0 { margin-bottom: 0; }
