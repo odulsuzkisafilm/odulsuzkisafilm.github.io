@@ -191,3 +191,17 @@ document.addEventListener('DOMContentLoaded', function() {
     audio.play().catch(speakFallback);
   });
 })();
+
+
+// Home page scroll hint: the floating arrow disappears once the visitor scrolls.
+(function() {
+  const hint = document.querySelector('.scroll-hint');
+  if (!hint) return;
+
+  function update() {
+    hint.classList.toggle('is-hidden', window.scrollY > 80);
+  }
+
+  window.addEventListener('scroll', update, { passive: true });
+  update();
+})();

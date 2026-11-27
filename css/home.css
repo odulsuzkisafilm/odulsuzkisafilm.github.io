@@ -234,6 +234,68 @@
   text-underline-offset: 3px;
 }
 
+/* ---------- Scroll hint ---------- */
+
+/* A strip pinned to the bottom of the window: the page fades out behind it
+   and an arrow sits in the middle. It disappears once the visitor scrolls. */
+.scroll-hint {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  height: 7rem;
+  padding-bottom: 1.1rem;
+  background: linear-gradient(to bottom, rgba(250, 250, 249, 0), var(--background-color) 62%);
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.scroll-hint a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.9rem;
+  height: 2.9rem;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  background-color: var(--white);
+  box-shadow: 0 6px 18px rgba(30, 58, 138, 0.18);
+  color: var(--primary-color);
+  text-decoration: none;
+  pointer-events: auto;
+  transition: background-color 0.2s ease, color 0.2s ease;
+  animation: scroll-hint-bob 1.8s ease-in-out infinite;
+}
+
+.scroll-hint a:hover {
+  background-color: var(--primary-color);
+  color: var(--white);
+  text-decoration: none;
+}
+
+.scroll-hint.is-hidden {
+  opacity: 0;
+}
+
+.scroll-hint.is-hidden a {
+  pointer-events: none;
+}
+
+@keyframes scroll-hint-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(5px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-hint a {
+    animation: none;
+  }
+}
+
 /* ---------- Sections ---------- */
 
 .home-main {
