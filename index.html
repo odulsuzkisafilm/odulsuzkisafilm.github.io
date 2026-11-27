@@ -64,11 +64,12 @@
   
   <!-- Stylesheets -->
   <link rel="stylesheet" href="css/main.css?v=20261127">
+  <link rel="stylesheet" href="css/home.css?v=20261127">
   
   <!-- Font Awesome for icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
-<body>
+<body class="home">
   
   <!-- Navigation -->
   <nav>
@@ -91,182 +92,161 @@
     </div>
   </nav>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="container">
-      <div class="hero-content">
-        <div class="hero-image">
-          <img src="images/profile.jpg" alt="Efe Çınar" onerror="this.src='https://via.placeholder.com/280x280/1e3a8a/ffffff?text=EÇ'">
-        </div>
-        <div class="hero-text">
-          <h1>Efe Çınar</h1>
-          <p class="hero-pronunciation">
-            <button type="button" class="pronounce-btn" aria-label="Listen to how Efe Çınar is pronounced" title="Listen to the pronunciation">
-              <i class="fas fa-volume-high"></i>
-            </button>
-            <span>pronounced <em>eh-FEH chuh-NAR</em></span>
-          </p>
-          <p class="hero-subtitle">PhD Student in Computer Science at the University of British Columbia</p>
-          <p class="hero-description">
-            I am a PhD student in Computer Science at the University of British Columbia, advised by 
-            <a href="https://www.cs.ubc.ca/~kevinlb/" target="_blank" class="research-link">Prof. Kevin Leyton-Brown</a>. 
-            Before that, I completed a double major in Computer Science and Engineering and Industrial Engineering at Sabancı University. 
-            <a href="#research-interests" class="research-link">My research interests</a> lie in 
-            <strong>Algorithm Configuration</strong>, 
-            <strong>Algorithmic Game Theory</strong>, 
-            <strong>Knowledge Representation and Reasoning</strong>, and 
-            <strong>Multi-Agent Systems</strong>.
-          </p>
-          <div class="hero-contact">
-            <span class="no-copy" aria-label="Email address">
-              <i class="fas fa-envelope"></i> efecinar [at] cs.ubc.ca
-            </span>
-            <a href="https://github.com/odulsuzkisafilm" target="_blank">
-              <i class="fab fa-github"></i> github.com/odulsuzkisafilm
-            </a>
-            <a href="https://www.linkedin.com/in/efe-cinar" target="_blank">
-              <i class="fab fa-linkedin"></i> linkedin.com/in/efe-cinar
-            </a>
-          </div>
-          <div class="hero-buttons">
-            <a href="assets/CV_EfeCinar.pdf" class="btn btn-primary" target="_blank">
-              <i class="fas fa-file-pdf"></i> Download CV
-            </a>
-          </div>
-        </div>
-      </div>
+  <!-- Intro -->
+  <header class="intro">
+    <div class="intro-text">
+      <h1>Efe Çınar</h1>
+      <p class="say">
+        <button type="button" class="pronounce-btn" aria-label="Listen to how Efe Çınar is pronounced" title="Listen to the pronunciation">
+          <i class="fas fa-volume-high"></i>
+        </button>
+        <span>pronounced <em>eh-FEH chuh-NAR</em></span>
+      </p>
+      <p class="lede">
+        I am a PhD student in Computer Science at the University of British Columbia, advised by
+        <a href="https://www.cs.ubc.ca/~kevinlb/" target="_blank">Prof. Kevin Leyton-Brown</a>.
+        Before that, I completed a double major in Computer Science and Engineering and Industrial Engineering at Sabancı University.
+        <a href="#research-interests">My research interests</a> lie in
+        <a class="mark" href="#algorithm-configuration">Algorithm Configuration</a>,
+        <a class="mark" href="#algorithmic-game-theory">Algorithmic Game Theory</a>,
+        <a class="mark" href="#krr">Knowledge Representation and Reasoning</a>, and
+        <a class="mark" href="#mas">Multi-Agent Systems</a>.
+      </p>
+      <ul class="contact-row">
+        <li><a class="cv-btn" href="assets/CV_EfeCinar.pdf" target="_blank"><i class="fas fa-file-pdf"></i> Download CV</a></li>
+        <li><span class="no-copy" aria-label="Email address"><i class="fas fa-envelope"></i> efecinar [at] cs.ubc.ca</span></li>
+        <li><a href="https://github.com/odulsuzkisafilm" target="_blank"><i class="fab fa-github"></i> GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/efe-cinar" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+      </ul>
     </div>
-  </section>
-
-  <!-- Education Section -->
-  <section class="section" style="background-color: white;">
-    <div class="container">
-      <h2 class="section-title">Education</h2>
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">University of British Columbia</h3>
-              <p class="timeline-location">Vancouver, Canada</p>
-            </div>
-            <span class="timeline-date">Sep 2026 - Present</span>
-          </div>
-          <p class="timeline-subtitle">
-            <strong>Ph.D. in Computer Science</strong><br>
-            Supervisor: <a href="https://www.cs.ubc.ca/~kevinlb/" target="_blank" style="color: var(--primary-color);">Prof. Kevin Leyton-Brown</a>
-          </p>
-          <div class="timeline-content">
-            <ul>
-              <li>Research areas: <strong>Algorithm Configuration</strong> and <strong>Algorithmic Game Theory</strong></li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Sabancı University</h3>
-              <p class="timeline-location">Istanbul, Turkey</p>
-            </div>
-            <span class="timeline-date">2021 - 2026</span>
-          </div>
-          <p class="timeline-subtitle">
-            <strong>B.S. in Computer Science and Engineering</strong>, Minor in Mathematics<br>
-            <strong>B.S. in Industrial Engineering</strong><br>
-            <em>Full Tuition Scholarship</em>
-          </p>
-          <div class="timeline-content">
-            <ul>
-              <li><strong>GPA: 3.98/4.00</strong></li>
-              <li><strong>Top 3 GPA</strong> in the Faculty of Engineering and Natural Sciences</li>
-            </ul>
-          </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Uppsala University</h3>
-              <p class="timeline-location">Uppsala, Sweden</p>
-            </div>
-            <span class="timeline-date">Jan 2024 - June 2024</span>
-          </div>
-          <p class="timeline-subtitle">
-            <strong>Erasmus Exchange Program</strong><br>
-            Computer Science and Mathematics
-          </p>
-          <div class="timeline-content">
-          </div>
-        </div>
-      </div>
+    <div class="portrait">
+      <img src="images/profile.jpg" alt="Efe Çınar">
     </div>
-  </section>
+  </header>
 
-  <!-- Research Interests -->
-  <section class="section" id="research-interests">
-    <div class="container">
-      <h2 class="section-title">Research Interests</h2>
-      <div class="grid-2">
-        <div class="card" id="algorithm-configuration">
-          <h3 class="card-title"><i class="fas fa-sliders"></i> Algorithm Configuration</h3>
-          <p class="card-description">
+  <!-- Figure 1: a live picture of algorithm configuration -->
+  <figure class="config-fig">
+    <button type="button" class="config-stage" aria-label="Animated illustration of algorithm configuration. Press to draw a new landscape.">
+      <canvas aria-hidden="true"></canvas>
+      <span class="config-readout" aria-hidden="true"></span>
+    </button>
+    <figcaption>
+      <b>Fig. 1</b>
+      Algorithm configuration, live. Each dot is one setting of a solver's parameters, and a darker, larger dot means a faster solver.
+      The search can only see the settings it has tried: it keeps its best one, tests neighbours, and jumps away when it gets stuck.
+      Click the figure for a new landscape.
+    </figcaption>
+  </figure>
+
+  <main class="home-main">
+
+    <!-- Research Interests -->
+    <section class="home-section" id="research-interests">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <h2>Research Interests</h2>
+      </div>
+      <div class="topics">
+        <article class="topic" id="algorithm-configuration">
+          <h3><i class="fas fa-sliders"></i> Algorithm Configuration</h3>
+          <p>
             Automatically tuning and selecting algorithms instead of hand-tweaking them. I am interested in
             configuration procedures with provable guarantees, algorithm selection, and empirical performance
             models for solvers of hard combinatorial problems.
           </p>
-        </div>
-        <div class="card" id="algorithmic-game-theory">
-          <h3 class="card-title"><i class="fas fa-chess"></i> Algorithmic Game Theory</h3>
-          <p class="card-description">
+        </article>
+        <article class="topic" id="algorithmic-game-theory">
+          <h3><i class="fas fa-chess"></i> Algorithmic Game Theory</h3>
+          <p>
             Computation in settings where participants act strategically. I am interested in mechanism and
             market design, equilibrium computation, and using learning methods to design rules that lead to
             good collective outcomes.
           </p>
-        </div>
-        <div class="card" id="krr">
-          <h3 class="card-title"><i class="fas fa-brain"></i> Knowledge Representation and Reasoning</h3>
-          <p class="card-description">
+        </article>
+        <article class="topic" id="krr">
+          <h3><i class="fas fa-brain"></i> Knowledge Representation and Reasoning</h3>
+          <p>
             Logic-based representations that enable automated reasoning. I am interested in declarative
             problem solving such as Answer Set Programming, and in combining symbolic reasoning with learning
             for more explainable AI.
           </p>
-        </div>
-        <div class="card" id="mas">
-          <h3 class="card-title"><i class="fas fa-users"></i> Multi-Agent Systems</h3>
-          <p class="card-description">
+        </article>
+        <article class="topic" id="mas">
+          <h3><i class="fas fa-users"></i> Multi-Agent Systems</h3>
+          <p>
             How autonomous agents coordinate, communicate, and plan together. I am interested in decentralized
             planning under uncertainty, epistemic reasoning about what agents know, and fair, effective
             coordination mechanisms.
           </p>
-        </div>
+        </article>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Awards Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Awards & Honors</h2>
-      <ul class="awards-list">
-        <li class="award-item">
-          <span class="award-title">AML-TN Funded Trainee Award, Advanced Machine Learning Training Network (NSERC CREATE), University of British Columbia</span>
-          <span class="award-year">2026</span>
+    <!-- Education -->
+    <section class="home-section">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2>Education</h2>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <span class="row-date">Sep 2026 &ndash; Present</span>
+          <div>
+            <h3 class="row-title">University of British Columbia <span class="row-place">Vancouver, Canada</span></h3>
+            <p><strong>Ph.D. in Computer Science</strong>, supervised by <a href="https://www.cs.ubc.ca/~kevinlb/" target="_blank">Prof. Kevin Leyton-Brown</a></p>
+            <p>Research areas: Algorithm Configuration and Algorithmic Game Theory</p>
+          </div>
         </li>
-        <li class="award-item">
-          <span class="award-title">Top 3 GPA, Faculty of Engineering and Natural Sciences, Sabancı University</span>
-          <span class="award-year">2026</span>
+        <li class="row">
+          <span class="row-date">2021 &ndash; 2026</span>
+          <div>
+            <h3 class="row-title">Sabancı University <span class="row-place">Istanbul, Turkey</span></h3>
+            <p><strong>B.S. in Computer Science and Engineering</strong>, Minor in Mathematics</p>
+            <p><strong>B.S. in Industrial Engineering</strong></p>
+            <ul class="facts">
+              <li>GPA 3.98 / 4.00</li>
+              <li>Top 3 GPA in the Faculty of Engineering and Natural Sciences</li>
+              <li>Full Tuition Scholarship</li>
+            </ul>
+          </div>
         </li>
-        <li class="award-item">
-          <span class="award-title">TUBITAK Undergraduate Scholarship, Research Trainee on a TUBITAK-funded project</span>
-          <span class="award-year">Aug 2023 – Jan 2024</span>
-        </li>
-        <li class="award-item">
-          <span class="award-title">Full Tuition Scholarship, Sabancı University</span>
-          <span class="award-year">2021</span>
+        <li class="row">
+          <span class="row-date">Jan &ndash; June 2024</span>
+          <div>
+            <h3 class="row-title">Uppsala University <span class="row-place">Uppsala, Sweden</span></h3>
+            <p><strong>Erasmus Exchange Program</strong>, Computer Science and Mathematics</p>
+          </div>
         </li>
       </ul>
-    </div>
-  </section>
+    </section>
+
+    <!-- Awards -->
+    <section class="home-section">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2>Awards &amp; Honors</h2>
+      </div>
+      <ul class="rows rows-tight">
+        <li class="row">
+          <span class="row-date">2026</span>
+          <p>AML-TN Funded Trainee Award, Advanced Machine Learning Training Network (NSERC CREATE), University of British Columbia</p>
+        </li>
+        <li class="row">
+          <span class="row-date">2026</span>
+          <p>Top 3 GPA, Faculty of Engineering and Natural Sciences, Sabancı University</p>
+        </li>
+        <li class="row">
+          <span class="row-date">Aug 2023 &ndash; Jan 2024</span>
+          <p>TUBITAK Undergraduate Scholarship, Research Trainee on a TUBITAK-funded project</p>
+        </li>
+        <li class="row">
+          <span class="row-date">2021</span>
+          <p>Full Tuition Scholarship, Sabancı University</p>
+        </li>
+      </ul>
+    </section>
+
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -294,6 +274,7 @@
 
   <!-- JavaScript -->
   <script src="js/main.js?v=20261127"></script>
+  <script src="js/home-figure.js?v=20261127"></script>
 </body>
 </html>
 

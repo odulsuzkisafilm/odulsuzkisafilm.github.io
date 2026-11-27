@@ -1,0 +1,437 @@
+/* ===================================
+   Home page
+   Loaded only by index.html, on top of main.css.
+   =================================== */
+
+.home {
+  background-color: var(--background-color);
+}
+
+/* ---------- Intro ---------- */
+
+.intro {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 2rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) clamp(200px, 24vw, 290px);
+  gap: clamp(2.25rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.intro h1 {
+  font-size: clamp(3.25rem, 8.5vw, 6.25rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.9rem;
+}
+
+.say {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 1.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.say em {
+  color: var(--primary-color);
+  font-style: normal;
+  font-weight: 500;
+}
+
+.home .pronounce-btn {
+  width: 2rem;
+  height: 2rem;
+  border: 1px solid var(--primary-color);
+  background-color: transparent;
+  color: var(--primary-color);
+}
+
+.home .pronounce-btn:hover {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  color: var(--white);
+}
+
+.lede {
+  max-width: 62ch;
+  margin-bottom: 1.6rem;
+  font-size: 1.12rem;
+  line-height: 1.75;
+}
+
+.lede a {
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: rgba(30, 58, 138, 0.35);
+  text-underline-offset: 3px;
+}
+
+.lede a:hover {
+  text-decoration-color: var(--primary-color);
+}
+
+.lede a.mark {
+  font-weight: 600;
+  text-decoration: none;
+  background-image: linear-gradient(rgba(6, 182, 212, 0.28), rgba(6, 182, 212, 0.28));
+  background-repeat: no-repeat;
+  background-size: 100% 0.45em;
+  background-position: 0 88%;
+  transition: background-size 0.2s ease;
+}
+
+.lede a.mark:hover {
+  background-size: 100% 100%;
+}
+
+.contact-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem 1.5rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.contact-row a,
+.contact-row span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.contact-row i {
+  color: var(--primary-color);
+}
+
+.contact-row a:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.contact-row a.cv-btn {
+  padding: 0.6rem 1.15rem;
+  border-radius: 999px;
+  background-color: var(--primary-color);
+  color: var(--white);
+  font-weight: 600;
+}
+
+.contact-row a.cv-btn i {
+  color: var(--white);
+}
+
+.contact-row a.cv-btn:hover {
+  background-color: var(--accent-color);
+  color: var(--white);
+  text-decoration: none;
+}
+
+/* ---------- Portrait ---------- */
+
+.portrait {
+  position: relative;
+  justify-self: end;
+  width: 100%;
+  max-width: 290px;
+}
+
+.portrait img {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: 18px;
+}
+
+/* Offset outline behind the photo */
+.portrait::before {
+  content: '';
+  position: absolute;
+  inset: 16px -16px -16px 16px;
+  border: 2px solid var(--accent-color);
+  border-radius: 18px;
+}
+
+/* A patch of the same dot grid as Fig. 1 */
+.portrait::after {
+  content: '';
+  position: absolute;
+  top: -22px;
+  left: -26px;
+  width: 104px;
+  height: 104px;
+  background-image: radial-gradient(var(--primary-color) 1.6px, transparent 1.7px);
+  background-size: 13px 13px;
+  opacity: 0.45;
+}
+
+/* ---------- Fig. 1 ---------- */
+
+.config-fig {
+  max-width: 1200px;
+  margin: 1.25rem auto 0;
+  padding: 0 2rem;
+}
+
+.config-stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: 1px solid var(--border-color);
+  border-radius: 14px;
+  background-color: var(--white);
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.config-stage:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 3px;
+}
+
+.config-stage canvas {
+  display: block;
+  width: 100%;
+  height: 176px;
+}
+
+.config-readout {
+  position: absolute;
+  top: 0.6rem;
+  right: 0.7rem;
+  padding: 0.2rem 0.55rem;
+  border: 1px solid var(--border-color);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.92);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+.config-fig figcaption {
+  max-width: 92ch;
+  margin-top: 0.7rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+.config-fig figcaption b {
+  margin-right: 0.4rem;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+/* ---------- Sections ---------- */
+
+.home-main {
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  padding: 0 2rem;
+}
+
+.home-section {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 2.5rem;
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--border-color);
+}
+
+.sec-head {
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
+}
+
+.sec-num {
+  display: block;
+  font-family: 'Bitcount Grid Single', var(--font-mono);
+  font-size: 2.1rem;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+.sec-head h2 {
+  margin: 0.35rem 0 0;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+/* Research interests */
+
+.topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 2.75rem;
+}
+
+.topic h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+  scroll-margin-top: 6rem;
+}
+
+.topic h3 i {
+  margin-right: 0.35rem;
+  font-size: 0.9em;
+  color: var(--accent-color);
+}
+
+.topic p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Rows: education and awards */
+
+.rows {
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 175px minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px dashed var(--border-color);
+}
+
+.row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.row:last-child {
+  padding-bottom: 0;
+}
+
+.row-date {
+  padding-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.row-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+}
+
+.row-place {
+  margin-left: 0.4rem;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.row p {
+  margin: 0;
+  font-size: 0.97rem;
+}
+
+.row a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  list-style: none;
+}
+
+.facts li {
+  padding: 0.15rem 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background-color: var(--white);
+  font-size: 0.82rem;
+  color: var(--primary-color);
+}
+
+.rows-tight .row {
+  padding: 0.7rem 0;
+}
+
+.rows-tight .row:first-child {
+  padding-top: 0;
+}
+
+.rows-tight .row-date {
+  padding-top: 0.15rem;
+}
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 700px) {
+  .intro {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding-top: 2.5rem;
+  }
+
+  .portrait {
+    order: -1;
+    justify-self: start;
+    max-width: 190px;
+    margin-left: 1rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .home-section {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sec-head {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .sec-head h2 {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .intro,
+  .config-fig,
+  .home-main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .topics {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+
+  .config-stage canvas {
+    height: 150px;
+  }
+}
