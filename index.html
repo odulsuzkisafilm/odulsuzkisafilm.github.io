@@ -124,17 +124,17 @@
     </div>
   </header>
 
-  <!-- Figure 1: a live picture of algorithm configuration -->
+  <!-- A live, simplified simulation of COUP -->
   <figure class="config-fig">
-    <button type="button" class="config-stage" aria-label="Animated illustration of algorithm configuration. Press to draw a new landscape.">
+    <button type="button" class="config-stage" aria-label="Animated illustration of the COUP algorithm configuration procedure. Press to restart it.">
       <canvas aria-hidden="true"></canvas>
       <span class="config-readout" aria-hidden="true"></span>
     </button>
     <figcaption>
-      <b>Fig. 1</b>
-      Algorithm configuration, live. Each dot is one setting of a solver's parameters, and a darker, larger dot means a faster solver.
-      The search can only see the settings it has tried: it keeps its best one, tests neighbours, and jumps away when it gets stuck.
-      Click the figure for a new landscape.
+      <a href="https://arxiv.org/abs/2405.18246" target="_blank">COUP</a>, an algorithm configuration procedure from my research group
+      (Graham &amp; Leyton-Brown), in a simplified simulation. Each bar is one configuration of a solver and spans the range its true utility could still lie in.
+      COUP always runs the configuration whose bar reaches highest, so promising bars shrink while weak ones are left alone and fade once ruled out.
+      The turquoise bar is its current pick. Each phase samples more configurations and asks for a smaller gap &epsilon;. Click to restart.
     </figcaption>
   </figure>
 

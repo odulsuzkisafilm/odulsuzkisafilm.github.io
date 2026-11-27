@@ -1,7 +1,22 @@
-// Fig. 1 on the home page: a small animation of algorithm configuration.
-// A hidden "landscape" assigns every parameter setting (a dot) a runtime.
-// An iterated local search explores it: it evaluates neighbours of its
-// current setting, moves when one is faster, and jumps elsewhere when stuck.
+// The figure on the home page: a simplified, live simulation of COUP
+// ("Continuous, Optimistic Utilitarian Procrastination"), from
+// Graham & Leyton-Brown, "Utilitarian Algorithm Configuration for
+// Infinite Parameter Spaces" (arXiv:2405.18246).
+//
+// What follows the paper (Algorithm 2):
+//   - every configuration keeps an upper and a lower confidence bound on
+//     its utility, a captime, and the fraction of runs that finished;
+//   - each step runs the configuration with the highest upper bound;
+//   - a configuration's captime doubles when the capped runs matter more
+//     than the statistical uncertainty;
+//   - a phase ends when (best upper bound - best lower bound) < epsilon_p,
+//     and the next phase samples more configurations.
+//
+// What is simplified for the picture:
+//   - runtimes are made up (log-normal, one median per configuration);
+//   - the confidence width is scaled down so that bars tighten after
+//     hundreds of runs instead of tens of thousands;
+//   - the phase schedule (epsilon_p, gamma_p) is chosen to look good.
 
 (function () {
   const stage = document.querySelector('.config-stage');
@@ -12,26 +27,118 @@
   const ctx = canvas.getContext('2d');
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  const CELL = 16;            // distance between dots, in CSS pixels
-  const STEP_MS = 85;         // time between evaluations
-  const PAUSE_MS = 4000;      // rest before starting a new landscape
-  const STUCK_AFTER = 16;     // failed neighbours before a jump
+  // ---- Simulation -------------------------------------------------------
 
-  const NAVY = [30, 58, 138];
-  const PALE = [199, 210, 227];
-  const UNSEEN = '#e3e8f0';
+  const DELTA = 0.01;          // failure probability
+  const K0 = 1;                // runtime at which utility falls to 1/2
+  const WIDTH_SCALE = 0.3;     // display-only narrowing of the bounds
+  const MAX_PHASE = 9;
+
+  // Log-Laplace utility of a runtime (as in the paper's experiments).
+  const utility = (t) => (t < K0 ? 1 - 0.5 * (t / K0) : 0.5 * (K0 / t));
+  const epsilonOf = (p) => Math.exp(-p / 3);
+  const gammaOf = (p) => Math.exp(-p / 5);
+  const sizeOf = (p) => Math.ceil(Math.log((Math.PI * Math.PI * p * p) / (3 * DELTA)) / gammaOf(p));
+
+  let configs, phase, lastPhase, runs, lastRun, bestUcb, bestLcb, pick;
+  let phaseOver, pauseUntil, finished;
+
+  function gaussian() {
+    let sum = 0;
+    for (let i = 0; i < 6; i++) sum += Math.random();
+    return (sum - 3) / Math.sqrt(0.5);
+  }
+
+  function newConfig() {
+    return {
+      median: Math.log(0.03) + Math.random() * Math.log(100),   // 0.03 .. 3
+      times: [], m: 0, kappa: 1, sumU: 0, done: 0,
+      ucb: 1, lcb: 0, uhat: 0
+    };
+  }
+
+  function alpha(m, kappa) {
+    const l = Math.log2(kappa) + 1;
+    const n = configs.length;
+    return WIDTH_SCALE * Math.sqrt(Math.log((36 * phase * phase * n * m * m * l * l) / DELTA) / (2 * m));
+  }
+
+  function updateBounds(c) {
+    if (c.m === 0) { c.ucb = 1; c.lcb = 0; return; }
+    const a = alpha(c.m, c.kappa);
+    const uk = utility(c.kappa);
+    c.uhat = c.sumU / c.m;
+    c.ucb = Math.min(1, c.uhat + (1 - uk) * a);
+    c.lcb = Math.max(0, c.uhat - a - uk * (1 - c.done / c.m));
+  }
+
+  function findBest() {
+    bestUcb = -1; bestLcb = -1; pick = 0;
+    let next = 0;
+    configs.forEach(function (c, i) {
+      if (c.ucb > bestUcb || (c.ucb === bestUcb && c.m < configs[next].m)) { bestUcb = c.ucb; next = i; }
+      if (c.lcb > bestLcb) { bestLcb = c.lcb; pick = i; }
+    });
+    return next;
+  }
+
+  function startPhase() {
+    phase += 1;
+    const target = sizeOf(phase);
+    while (configs.length < target) configs.push(newConfig());
+    configs.forEach(updateBounds);
+    findBest();
+    phaseOver = false;
+  }
+
+  function reset() {
+    configs = [];
+    phase = 0;
+    runs = 0;
+    lastRun = -1;
+    finished = false;
+    pauseUntil = 0;
+    startPhase();
+  }
+
+  // One run of the configuration with the highest upper bound.
+  function step() {
+    const i = findBest();
+    if (bestUcb - bestLcb < epsilonOf(phase)) { phaseOver = true; return; }
+
+    const c = configs[i];
+    c.m += 1;
+    if (c.m > 1) {
+      const capped = 1 - c.done / (c.m - 1);
+      if (2 * alpha(c.m, c.kappa) <= utility(c.kappa) * capped) {
+        // Captime doubling: re-read every earlier run under the new cap.
+        c.kappa *= 2;
+        c.sumU = 0; c.done = 0;
+        for (const t of c.times) {
+          c.sumU += utility(Math.min(t, c.kappa));
+          if (t <= c.kappa) c.done += 1;
+        }
+      }
+    }
+    const t = Math.exp(c.median + 0.7 * gaussian());
+    c.times.push(t);
+    c.sumU += utility(Math.min(t, c.kappa));
+    if (t <= c.kappa) c.done += 1;
+    updateBounds(c);
+    runs += 1;
+    lastRun = i;
+    findBest();
+  }
+
+  // ---- Drawing ----------------------------------------------------------
+
+  const PAD = { left: 38, right: 30, top: 42, bottom: 18 };
+  const NAVY = '30, 58, 138';
   const ACCENT = '#06b6d4';
+  let width, height, plotW, plotH, slots;
 
-  let width, height, cols, rows, offsetX, offsetY;
-  let land, seen, current, best, trail, evaluations, budget, stuck, finishedAt;
-  let onScreen = true;
-
-  const rand = (n) => Math.floor(Math.random() * n);
-  const cellX = (i) => offsetX + (i % cols) * CELL;
-  const cellY = (i) => offsetY + Math.floor(i / cols) * CELL;
-
-  // Map a landscape value in [0, 1] to a runtime between ~20 s and ~0.1 s.
-  const runtimeOf = (v) => Math.pow(10, 1.3 - 2.3 * v);
+  const xOf = (i) => PAD.left + (i + 0.5) * (plotW / slots);
+  const yOf = (u) => PAD.top + (1 - u) * plotH;
 
   function measure() {
     const dpr = window.devicePixelRatio || 1;
@@ -40,160 +147,156 @@
     canvas.width = Math.round(width * dpr);
     canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cols = Math.max(4, Math.floor((width - CELL) / CELL));
-    rows = Math.max(3, Math.floor((height - CELL) / CELL));
-    offsetX = (width - (cols - 1) * CELL) / 2;
-    offsetY = (height - (rows - 1) * CELL) / 2;
-  }
-
-  function evaluate(i) {
-    seen[i] = 1;
-    evaluations += 1;
-  }
-
-  function newLandscape() {
-    const bumps = [];
-    const count = 4 + rand(3);
-    for (let b = 0; b < count; b++) {
-      bumps.push({
-        x: Math.random() * cols,
-        y: Math.random() * rows,
-        spread: (0.05 + Math.random() * 0.09) * cols,
-        peak: b === 0 ? 1 : 0.4 + Math.random() * 0.5
-      });
-    }
-
-    land = new Float32Array(cols * rows);
-    let top = 0;
-    for (let i = 0; i < land.length; i++) {
-      const x = i % cols;
-      const y = Math.floor(i / cols);
-      let v = 0;
-      for (const bump of bumps) {
-        const dx = x - bump.x;
-        const dy = (y - bump.y) * 1.6;
-        v = Math.max(v, bump.peak * Math.exp(-(dx * dx + dy * dy) / (2 * bump.spread * bump.spread)));
-      }
-      v += Math.random() * 0.05;
-      land[i] = v;
-      if (v > top) top = v;
-    }
-    for (let i = 0; i < land.length; i++) land[i] /= top;
-
-    seen = new Uint8Array(cols * rows);
-    evaluations = 0;
-    stuck = 0;
-    finishedAt = null;
-    budget = Math.min(280, Math.round(cols * rows * 0.34));
-    current = rand(cols * rows);
-    evaluate(current);
-    best = current;
-    trail = [{ cell: current, jump: false }];
-  }
-
-  function neighbourOf(i) {
-    const x = i % cols;
-    const y = Math.floor(i / cols);
-    for (let attempt = 0; attempt < 8; attempt++) {
-      const nx = x + rand(5) - 2;
-      const ny = y + rand(5) - 2;
-      if (nx < 0 || ny < 0 || nx >= cols || ny >= rows) continue;
-      const n = ny * cols + nx;
-      if (n !== i) return n;
-    }
-    return i;
-  }
-
-  function step() {
-    if (stuck >= STUCK_AFTER) {
-      // Stuck in a local optimum: jump to a fresh part of the space.
-      current = rand(cols * rows);
-      evaluate(current);
-      trail.push({ cell: current, jump: true });
-      stuck = 0;
-    } else {
-      const candidate = neighbourOf(current);
-      evaluate(candidate);
-      if (land[candidate] > land[current]) {
-        current = candidate;
-        trail.push({ cell: current, jump: false });
-        stuck = 0;
-      } else {
-        stuck += 1;
-      }
-    }
-    if (land[current] > land[best]) best = current;
-    if (evaluations >= budget) finishedAt = performance.now();
+    plotW = width - PAD.left - PAD.right;
+    plotH = height - PAD.top - PAD.bottom;
+    // Narrow screens stop at an earlier phase so the bars stay readable.
+    lastPhase = 1;
+    for (let p = 1; p <= MAX_PHASE; p++) if (sizeOf(p) * 7 <= plotW) lastPhase = p;
+    slots = sizeOf(lastPhase);
   }
 
   function draw() {
     ctx.clearRect(0, 0, width, height);
+    ctx.font = '10px "JetBrains Mono", ui-monospace, monospace';
+    ctx.textBaseline = 'middle';
 
-    // Dots
-    for (let i = 0; i < land.length; i++) {
-      const x = cellX(i);
-      const y = cellY(i);
+    // Utility axis
+    [0, 0.5, 1].forEach(function (u) {
+      ctx.strokeStyle = '#edf0f5';
+      ctx.lineWidth = 1;
       ctx.beginPath();
-      if (seen[i]) {
-        const v = land[i];
-        const c = PALE.map((p, k) => Math.round(p + (NAVY[k] - p) * v));
-        ctx.fillStyle = 'rgb(' + c.join(',') + ')';
-        ctx.arc(x, y, 2 + 4.6 * v, 0, Math.PI * 2);
-      } else {
-        ctx.fillStyle = UNSEEN;
-        ctx.arc(x, y, 1.4, 0, Math.PI * 2);
+      ctx.moveTo(PAD.left, yOf(u) + 0.5);
+      ctx.lineTo(width - PAD.right, yOf(u) + 0.5);
+      ctx.stroke();
+      ctx.fillStyle = '#94a3b8';
+      ctx.textAlign = 'right';
+      ctx.fillText(u === 0.5 ? '0.5' : String(u), PAD.left - 8, yOf(u));
+    });
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#94a3b8';
+    ctx.fillText('utility', 10, 14);
+
+    // The gap COUP is trying to close: best upper bound minus best lower bound
+    const yTop = yOf(bestUcb);
+    const yBottom = yOf(bestLcb);
+    ctx.fillStyle = 'rgba(6, 182, 212, 0.09)';
+    ctx.fillRect(PAD.left, yTop, plotW, yBottom - yTop);
+    ctx.strokeStyle = ACCENT;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(PAD.left, yBottom + 0.5);
+    ctx.lineTo(width - PAD.right, yBottom + 0.5);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.fillStyle = ACCENT;
+    ctx.font = 'italic 13px Georgia, serif';
+    ctx.fillText('ε', width - PAD.right + 9, (yTop + yBottom) / 2);
+
+    // One bar per configuration
+    const spacing = plotW / slots;
+    const barW = Math.max(2, Math.min(6, spacing * 0.42));
+    for (let i = 0; i < slots; i++) {
+      const x = xOf(i);
+      const c = configs[i];
+      if (!c) {
+        // Not sampled yet
+        ctx.fillStyle = '#cfd7e3';
+        ctx.beginPath();
+        ctx.arc(x, yOf(0), 1.4, 0, Math.PI * 2);
+        ctx.fill();
+        continue;
       }
+      const ruledOut = c.ucb < bestLcb;
+      if (i === pick) ctx.fillStyle = ACCENT;
+      else if (ruledOut) ctx.fillStyle = 'rgba(' + NAVY + ', 0.12)';
+      else ctx.fillStyle = 'rgba(' + NAVY + ', ' + (c.m === 0 ? 0.16 : 0.5) + ')';
+      const y1 = yOf(c.ucb);
+      const y2 = Math.max(y1 + 3, yOf(c.lcb));
+      ctx.beginPath();
+      ctx.roundRect(x - barW / 2, y1, barW, y2 - y1, barW / 2);
+      ctx.fill();
+
+      if (c.m > 0 && !ruledOut && i !== pick) {
+        ctx.fillStyle = 'rgb(' + NAVY + ')';
+        ctx.beginPath();
+        ctx.arc(x, yOf(c.uhat), Math.min(2.2, barW / 2 + 0.4), 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    // Pointer under COUP's current pick, so it stays visible when its bar is tiny
+    {
+      const x = xOf(pick);
+      const y = Math.min(yOf(0) - 2, Math.max(yOf(configs[pick].ucb) + 3, yOf(configs[pick].lcb)) + 5);
+      ctx.fillStyle = ACCENT;
+      ctx.beginPath();
+      ctx.moveTo(x - 5, y + 7);
+      ctx.lineTo(x + 5, y + 7);
+      ctx.lineTo(x, y);
+      ctx.closePath();
       ctx.fill();
     }
 
-    // Path of the search: solid for improvements, dashed for jumps
-    ctx.lineWidth = 1.5;
-    ctx.strokeStyle = ACCENT;
-    for (let t = 1; t < trail.length; t++) {
-      const from = trail[t - 1].cell;
-      const to = trail[t].cell;
+    // Marker over the configuration that was just run
+    if (lastRun >= 0 && !finished) {
+      const x = xOf(lastRun);
+      const y = yOf(configs[lastRun].ucb) - 5;
+      ctx.fillStyle = 'rgb(' + NAVY + ')';
       ctx.beginPath();
-      ctx.setLineDash(trail[t].jump ? [3, 5] : []);
-      ctx.globalAlpha = trail[t].jump ? 0.45 : 0.9;
-      ctx.moveTo(cellX(from), cellY(from));
-      ctx.lineTo(cellX(to), cellY(to));
-      ctx.stroke();
-    }
-    ctx.setLineDash([]);
-    ctx.globalAlpha = 1;
-
-    // Best setting found so far
-    ctx.beginPath();
-    ctx.arc(cellX(best), cellY(best), 10.5, 0, Math.PI * 2);
-    ctx.lineWidth = 2.5;
-    ctx.strokeStyle = ACCENT;
-    ctx.stroke();
-
-    // Where the search is now
-    if (current !== best) {
-      ctx.beginPath();
-      ctx.arc(cellX(current), cellY(current), 8, 0, Math.PI * 2);
-      ctx.lineWidth = 1.5;
-      ctx.strokeStyle = 'rgba(30, 58, 138, 0.75)';
-      ctx.stroke();
+      ctx.moveTo(x - 4, y - 6);
+      ctx.lineTo(x + 4, y - 6);
+      ctx.lineTo(x, y);
+      ctx.closePath();
+      ctx.fill();
     }
 
-    readout.textContent = evaluations + ' runs · best ' + runtimeOf(land[best]).toFixed(2) + ' s';
+    readout.textContent = 'phase ' + phase + ' · ' + configs.length + ' configurations · ' + runs.toLocaleString('en-US') + ' runs';
+  }
+
+  // ---- Animation --------------------------------------------------------
+
+  const TICK_MS = 60;
+  const PHASE_PAUSE_MS = 900;
+  const END_PAUSE_MS = 6000;
+
+  function advance(now) {
+    if (now < pauseUntil) return;
+    if (finished) { reset(); return; }
+    if (phaseOver) {
+      if (phase >= lastPhase) { finished = true; pauseUntil = now + END_PAUSE_MS; return; }
+      startPhase();
+      return;
+    }
+    // Few runs per tick at first, more as the totals grow.
+    const batch = Math.max(1, Math.round(runs / 45));
+    for (let k = 0; k < batch && !phaseOver; k++) step();
+    if (phaseOver) pauseUntil = now + PHASE_PAUSE_MS;
   }
 
   function runToEnd() {
-    while (finishedAt === null) step();
+    for (;;) {
+      while (!phaseOver) step();
+      if (phase >= lastPhase) break;
+      startPhase();
+    }
+    finished = true;
     draw();
   }
 
   function restart() {
     measure();
-    newLandscape();
+    reset();
     if (reduceMotion) runToEnd();
     else draw();
   }
 
+  if (!ctx.roundRect) {
+    ctx.roundRect = function (x, y, w, h) { this.rect(x, y, w, h); };
+  }
+
   restart();
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
 
   stage.addEventListener('click', restart);
 
@@ -210,6 +313,7 @@
 
   if (reduceMotion) return;
 
+  let onScreen = true;
   if ('IntersectionObserver' in window) {
     new IntersectionObserver(function (entries) {
       onScreen = entries[0].isIntersecting;
@@ -218,14 +322,7 @@
 
   setInterval(function () {
     if (!onScreen || document.hidden) return;
-    if (finishedAt !== null) {
-      if (performance.now() - finishedAt > PAUSE_MS) {
-        newLandscape();
-        draw();
-      }
-      return;
-    }
-    step();
+    advance(performance.now());
     draw();
-  }, STEP_MS);
+  }, TICK_MS);
 })();

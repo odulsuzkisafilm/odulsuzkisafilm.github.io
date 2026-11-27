@@ -162,7 +162,7 @@
   border-radius: 18px;
 }
 
-/* A patch of the same dot grid as Fig. 1 */
+/* A patch of dot grid behind the photo */
 .portrait::after {
   content: '';
   position: absolute;
@@ -175,7 +175,7 @@
   opacity: 0.45;
 }
 
-/* ---------- Fig. 1 ---------- */
+/* ---------- COUP figure ---------- */
 
 .config-fig {
   max-width: 1200px;
@@ -203,7 +203,7 @@
 .config-stage canvas {
   display: block;
   width: 100%;
-  height: 176px;
+  height: 200px;
 }
 
 .config-readout {
@@ -227,11 +227,11 @@
   color: var(--text-secondary);
 }
 
-.config-fig figcaption b {
-  margin-right: 0.4rem;
-  font-family: var(--font-mono);
-  font-weight: 500;
+.config-fig figcaption a {
   color: var(--primary-color);
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 /* ---------- Sections ---------- */
@@ -432,6 +432,6 @@
   }
 
   .config-stage canvas {
-    height: 150px;
+    height: 170px;
   }
 }
