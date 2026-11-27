@@ -284,14 +284,14 @@ nav {
 .hero {
   background: linear-gradient(135deg, var(--primary-color) 0%, #2563eb 100%);
   color: var(--white);
-  padding: var(--spacing-sm) 0;
+  padding: var(--spacing-md) 0;
   display: flex;
   align-items: center;
 }
 
 .hero-content {
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: auto 1fr;
   gap: var(--spacing-xl);
   align-items: center;
 }
@@ -301,8 +301,8 @@ nav {
 }
 
 .hero-image img {
-  width: 220px;
-  height: 220px;
+  width: 260px;
+  height: 260px;
   border-radius: 50%;
   object-fit: cover;
   border: 6px solid var(--white);
@@ -838,9 +838,10 @@ footer p {
   margin-top: var(--spacing-sm);
 }
 
+/* The iframe is a little taller than Spotify's 152px player on purpose:
+   at exactly 152px a zoomed browser rounds it down and Spotify falls back
+   to its smaller layout. The extra few pixels are transparent. */
 .spotify-embed {
-  border-radius: 12px;
-  overflow: hidden;
   line-height: 0;
 }
 
