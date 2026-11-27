@@ -1,5 +1,5 @@
 /* ===================================
-   Home page
+   Home page: intro, portrait, COUP figure and scroll hint.
    Loaded only by index.html, on top of main.css.
    =================================== */
 
@@ -296,151 +296,6 @@
   }
 }
 
-/* ---------- Sections ---------- */
-
-.home-main {
-  max-width: 1200px;
-  margin: 2.5rem auto 0;
-  padding: 0 2rem;
-}
-
-.home-section {
-  display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
-  gap: 2.5rem;
-  padding: 2.25rem 0;
-  border-top: 1px solid var(--border-color);
-}
-
-.sec-head {
-  position: sticky;
-  top: 5.5rem;
-  align-self: start;
-}
-
-.sec-num {
-  display: block;
-  font-family: 'Bitcount Grid Single', var(--font-mono);
-  font-size: 2.1rem;
-  line-height: 1;
-  color: var(--accent-color);
-}
-
-.sec-head h2 {
-  margin: 0.35rem 0 0;
-  font-size: 1.55rem;
-  line-height: 1.2;
-}
-
-/* Research interests */
-
-.topics {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.75rem 2.75rem;
-}
-
-.topic h3 {
-  margin-bottom: 0.4rem;
-  font-size: 1.2rem;
-  scroll-margin-top: 6rem;
-}
-
-.topic h3 i {
-  margin-right: 0.35rem;
-  font-size: 0.9em;
-  color: var(--accent-color);
-}
-
-.topic p {
-  margin: 0;
-  font-size: 0.95rem;
-}
-
-/* Rows: education and awards */
-
-.rows {
-  list-style: none;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 175px minmax(0, 1fr);
-  gap: 1.5rem;
-  padding: 1rem 0;
-  border-top: 1px dashed var(--border-color);
-}
-
-.row:first-child {
-  padding-top: 0;
-  border-top: 0;
-}
-
-.row:last-child {
-  padding-bottom: 0;
-}
-
-.row-date {
-  padding-top: 0.2rem;
-  font-family: var(--font-mono);
-  font-size: 0.82rem;
-  color: var(--text-secondary);
-}
-
-.row-title {
-  margin-bottom: 0.25rem;
-  font-size: 1.2rem;
-}
-
-.row-place {
-  margin-left: 0.4rem;
-  font-family: var(--font-primary);
-  font-size: 0.88rem;
-  font-style: italic;
-  font-weight: 400;
-  color: var(--text-secondary);
-}
-
-.row p {
-  margin: 0;
-  font-size: 0.97rem;
-}
-
-.row a {
-  color: var(--primary-color);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.facts {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-  margin-top: 0.6rem;
-  list-style: none;
-}
-
-.facts li {
-  padding: 0.15rem 0.7rem;
-  border: 1px solid var(--border-color);
-  border-radius: 999px;
-  background-color: var(--white);
-  font-size: 0.82rem;
-  color: var(--primary-color);
-}
-
-.rows-tight .row {
-  padding: 0.7rem 0;
-}
-
-.rows-tight .row:first-child {
-  padding-top: 0;
-}
-
-.rows-tight .row-date {
-  padding-top: 0.15rem;
-}
-
 /* ---------- Smaller screens ---------- */
 
 @media (max-width: 700px) {
@@ -458,39 +313,11 @@
   }
 }
 
-@media (max-width: 900px) {
-  .home-section {
-    grid-template-columns: 1fr;
-    gap: 1.25rem;
-  }
-
-  .sec-head {
-    position: static;
-    display: flex;
-    align-items: baseline;
-    gap: 0.75rem;
-  }
-
-  .sec-head h2 {
-    margin: 0;
-  }
-}
-
 @media (max-width: 600px) {
   .intro,
-  .config-fig,
-  .home-main {
+  .config-fig {
     padding-left: 1.25rem;
     padding-right: 1.25rem;
-  }
-
-  .topics {
-    grid-template-columns: 1fr;
-  }
-
-  .row {
-    grid-template-columns: 1fr;
-    gap: 0.25rem;
   }
 
   .config-stage canvas {

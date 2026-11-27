@@ -13,7 +13,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bitcount+Grid+Single:wght@100..900&display=swap" rel="stylesheet">
   
-  <link rel="stylesheet" href="css/main.css?v=20261127">
+  <link rel="stylesheet" href="css/main.css?v=20261128">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
@@ -39,256 +39,263 @@
     </div>
   </nav>
 
-  <!-- Personal Section -->
-  <section class="section">
-    <div class="container">
-      <h2 class="section-title">Beyond Research</h2>
-      <p class="mb-4" style="font-size: 1.125rem; color: var(--text-primary);">
-        My interests and activities beyond academic research
-      </p>
+  <header class="page-head">
+    <h1>Beyond Research</h1>
+    <p class="page-lede">My interests and activities beyond academic research</p>
+    <ul class="jump">
+      <li><a href="#activities"><i class="fas fa-arrow-down"></i> Extracurricular Activities</a></li>
+      <li><a href="#music"><i class="fas fa-arrow-down"></i> Music &amp; Playlists</a></li>
+      <li><a href="#bookshelf"><i class="fas fa-arrow-down"></i> My Bookshelf</a></li>
+      <li><a href="#board-games"><i class="fas fa-arrow-down"></i> Board Games</a></li>
+    </ul>
+  </header>
 
-      <h3 style="color: var(--primary-color); margin-top: 2rem; margin-bottom: 1rem;">
-        <i class="fas fa-users"></i> Extracurricular Activities
-      </h3>
+  <main class="page-main">
 
-      <div class="timeline">
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Literature Club - Sabancı University</h3>
-              <p class="timeline-location">Board Member & President</p>
-            </div>
-            <span class="timeline-date">2021 - 2026</span>
-          </div>
-          <div class="timeline-content">
-            <p>
+    <!-- Extracurricular Activities -->
+    <section class="page-section" id="activities">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">01</span>
+        <h2>Extracurricular Activities</h2>
+      </div>
+      <ul class="rows">
+        <li class="row">
+          <span class="row-date">2021 &ndash; 2026</span>
+          <div>
+            <h3 class="row-title">Literature Club <span class="row-place">Sabancı University</span></h3>
+            <p class="row-meta">Board Member &amp; President</p>
+            <p class="row-text">
               One of my most meaningful commitments at university was the Literature Club, 
               where I served as a board member for all four years and as President in my final year, organizing the club's activities. I was also the co-editor of the club's semiannual literature fanzine <strong><a href="https://www.instagram.com/harmonisabanci/?hl=en" target="_blank" style="color: var(--primary-color); text-decoration: none;">harmoni.</a></strong> for 3 years.
             </p>
           </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Google Developer Student Club (GDSC)</h3>
-              <p class="timeline-location">Workshop Facilitator</p>
-            </div>
-            <span class="timeline-date">September 2023 - June 2024</span>
-          </div>
-          <div class="timeline-content">
-            <p>
-              Active member of GDSC, leading technical TensorFlow, Selenium and Git/GitHub workshops of 2-3 hours each to help fellow students learn 
+        </li>
+        <li class="row">
+          <span class="row-date">Sep 2023 &ndash; June 2024</span>
+          <div>
+            <h3 class="row-title">Google Developer Student Club (GDSC)</h3>
+            <p class="row-meta">Workshop Facilitator</p>
+            <p class="row-text">
+              Active member of GDSC, leading technical TensorFlow, Selenium and Git/GitHub workshops of 2-3 hours each to help fellow students learn
               essential development tools and frameworks.
             </p>
           </div>
-        </div>
-
-        <div class="timeline-item">
-          <div class="timeline-header">
-            <div>
-              <h3 class="timeline-title">Social Responsibility Projects</h3>
-              <p class="timeline-location">Volunteer</p>
-            </div>
-          </div>
-          <div class="timeline-content">
-            <ul>
+        </li>
+        <li class="row">
+          <span class="row-date"></span>
+          <div>
+            <h3 class="row-title">Social Responsibility Projects</h3>
+            <p class="row-meta">Volunteer</p>
+            <ul class="row-list">
               <li>Participated in <strong>shoreline cleanup</strong> initiatives</li>
               <li>Volunteered in <strong>Gender and Memory Walks</strong>, promoting awareness of gender equality and social justice</li>
               <li>Contributed to <strong>botanic garden projects</strong> focusing on environmental conservation</li>
             </ul>
           </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Music -->
+    <section class="page-section" id="music">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">02</span>
+        <h2>Music &amp; Playlists</h2>
+      </div>
+      <div>
+        <p class="sec-intro">
+          Music is an essential part of my life. Here are some of my favorite playlists that accompany
+          my research, coding sessions, and leisure time.
+        </p>
+        <div class="spotify-container">
+          <div class="spotify-embed">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2BsY6mW6yEfRzQ7lPRwqfy?utm_source=generator" width="100%" height="160" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        
+          <div class="spotify-embed">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4gXReersH7rUwH4BrX69qn?utm_source=generator" width="100%" height="160" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
+        
+          <div class="spotify-embed">
+            <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4kiAfETYGkRetnJwAXrfiY?utm_source=generator" width="100%" height="160" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          </div>
         </div>
       </div>
+    </section>
 
-      <h3 style="color: var(--primary-color); margin-top: 3rem; margin-bottom: 1rem;">
-        <i class="fas fa-music"></i> Music & Playlists
-      </h3>
-      
-      <p class="card-description mb-3">
-        Music is an essential part of my life. Here are some of my favorite playlists that accompany 
-        my research, coding sessions, and leisure time.
-      </p>
+    <!-- Bookshelf -->
+    <section class="page-section" id="bookshelf">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">03</span>
+        <h2>My Bookshelf</h2>
+      </div>
+      <div>
+        <p class="sec-intro">
+          Some of the books I am currently reading, or did read and recommend. A mix of technical literature and fiction.
+        </p>
+        <h3 class="shelf-title"><i class="fas fa-book-reader"></i> Technical &amp; Academic</h3>
+        <div class="bookshelf-grid">
+          <div class="book-card">
+            <img src="images/KnowingReasoningActing_pic.jpg" alt="Knowing, Reasoning and Acting" class="book-cover" 
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Knowing+Reasoning+Acting'">
+            <p class="book-title">Knowing, Reasoning and Acting - Gerhard Lakemeyer & Sheila A. McIlraith</p>
+          </div>
+        
+          <div class="book-card">
+            <img src="images/MachinesLikeUs_pic.jpg" alt="Machines Like Us" class="book-cover"
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Machines+Like+Us'">
+            <p class="book-title">Machines Like Us - Ronald J. Brachman & Hector J. Levesque</p>
+          </div>
 
-      <div class="spotify-container">
-        <div class="spotify-embed">
-          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/2BsY6mW6yEfRzQ7lPRwqfy?utm_source=generator" width="100%" height="160" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="book-card">
+            <img src="images/MultiagentSystems_pic.gif" alt="Multiagent Systems" class="book-cover">
+            <p class="book-title">Multiagent Systems - Yoav Shoham &amp; Kevin Leyton-Brown</p>
+          </div>
+
+          <div class="book-card">
+            <img src="images/HighDimensionalProbability_pic.jpg" alt="High-Dimensional Probability" class="book-cover">
+            <p class="book-title">High-Dimensional Probability - Roman Vershynin</p>
+          </div>
+
+          <div class="book-card">
+            <img src="images/ProbabilityAndComputing_pic.jpg" alt="Probability and Computing" class="book-cover">
+            <p class="book-title">Probability and Computing - Michael Mitzenmacher &amp; Eli Upfal</p>
+          </div>
         </div>
+        <h3 class="shelf-title"><i class="fas fa-book"></i> Literature &amp; Fiction</h3>
+        <div class="bookshelf-grid">
+          <div class="book-card">
+            <img src="images/IfOnAWintersNight_pic.jpg" alt="If on a Winter's Night a Traveler" class="book-cover"
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=If+on+a+Winters+Night'">
+            <p class="book-title">If on a Winter's Night a Traveler - Italo Calvino</p>
+          </div>
         
-        <div class="spotify-embed">
-          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4gXReersH7rUwH4BrX69qn?utm_source=generator" width="100%" height="160" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
+          <div class="book-card">
+            <img src="images/OfMiceAndMen_pic.jpg" alt="Of Mice and Men" class="book-cover"
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Of+Mice+and+Men'">
+            <p class="book-title">Of Mice and Men - John Steinbeck</p>
+          </div>
         
-        <div class="spotify-embed">
-          <iframe data-testid="embed-iframe" style="border-radius:12px" src="https://open.spotify.com/embed/playlist/4kiAfETYGkRetnJwAXrfiY?utm_source=generator" width="100%" height="160" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+          <div class="book-card">
+            <img src="images/SilentHouse_pic.jpg" alt="Silent House" class="book-cover"
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Silent+House'">
+            <p class="book-title">Silent House - Orhan Pamuk</p>
+          </div>
+        
+          <div class="book-card">
+            <img src="images/Germinal_pic.jpg" alt="Germinal" class="book-cover"
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Germinal'">
+            <p class="book-title">Germinal - Émile Zola</p>
+          </div>
+        
+          <div class="book-card">
+            <img src="images/The_Count_of_Monte_Cristo_pic.jpg" alt="The Count of Monte Cristo" class="book-cover"
+                 onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=The+Count+of+Monte+Cristo'">
+            <p class="book-title">The Count of Monte Cristo - Alexandre Dumas</p>
+          </div>
+
+          <div class="book-card">
+            <img src="images/OSirada_pic.jpg" alt="O Sırada" class="book-cover">
+            <p class="book-title">O Sırada - Erman Çağlar</p>
+          </div>
+
+          <div class="book-card">
+            <img src="images/TheOvercoat_pic.jpg" alt="The Overcoat" class="book-cover">
+            <p class="book-title">The Overcoat - Nikolai Gogol</p>
+          </div>
         </div>
       </div>
+    </section>
 
-      <h2 class="section-title mt-4">My Bookshelf</h2>
-      <p class="card-description mb-4">
-        Some of the books I am currently reading, or did read and recommend. A mix of technical literature and fiction.
-      </p>
-      
-      <h3 style="color: var(--primary-color); margin-top: 2rem; margin-bottom: 1rem;">
-        <i class="fas fa-book-reader"></i> Technical & Academic
-      </h3>
-      <div class="bookshelf-grid">
-        <div class="book-card">
-          <img src="images/KnowingReasoningActing_pic.jpg" alt="Knowing, Reasoning and Acting" class="book-cover" 
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Knowing+Reasoning+Acting'">
-          <p class="book-title">Knowing, Reasoning and Acting - Gerhard Lakemeyer & Sheila A. McIlraith</p>
-        </div>
-        
-        <div class="book-card">
-          <img src="images/MachinesLikeUs_pic.jpg" alt="Machines Like Us" class="book-cover"
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Machines+Like+Us'">
-          <p class="book-title">Machines Like Us - Ronald J. Brachman & Hector J. Levesque</p>
-        </div>
-
-        <div class="book-card">
-          <img src="images/MultiagentSystems_pic.gif" alt="Multiagent Systems" class="book-cover">
-          <p class="book-title">Multiagent Systems - Yoav Shoham &amp; Kevin Leyton-Brown</p>
-        </div>
-
-        <div class="book-card">
-          <img src="images/HighDimensionalProbability_pic.jpg" alt="High-Dimensional Probability" class="book-cover">
-          <p class="book-title">High-Dimensional Probability - Roman Vershynin</p>
-        </div>
-
-        <div class="book-card">
-          <img src="images/ProbabilityAndComputing_pic.jpg" alt="Probability and Computing" class="book-cover">
-          <p class="book-title">Probability and Computing - Michael Mitzenmacher &amp; Eli Upfal</p>
+    <!-- Board Games -->
+    <section class="page-section" id="board-games">
+      <div class="sec-head">
+        <span class="sec-num" aria-hidden="true">04</span>
+        <h2>Board Games</h2>
+      </div>
+      <div>
+        <p class="sec-intro">
+          Board games I have played, in alphabetical order. Each one links to its
+          <a href="https://boardgamegeek.com" target="_blank" rel="noopener">BoardGameGeek</a> page.
+        </p>
+        <div class="tags game-tags">
+          <a class="tag" href="https://boardgamegeek.com/boardgame/68448" target="_blank" rel="noopener">7 Wonders</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/103343" target="_blank" rel="noopener">A Game of Thrones: The Board Game</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Akropolis%20Athena" target="_blank" rel="noopener">Akropolis: Athena</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/6249" target="_blank" rel="noopener">Alhambra</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/230802" target="_blank" rel="noopener">Azul</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/3955" target="_blank" rel="noopener">BANG!</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/10547" target="_blank" rel="noopener">Betrayal at House on the Hill</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/224517" target="_blank" rel="noopener">Brass: Birmingham</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/822" target="_blank" rel="noopener">Carcassonne</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/50381" target="_blank" rel="noopener">Cards Against Humanity</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/263918" target="_blank" rel="noopener">Cartographers</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/295947" target="_blank" rel="noopener">Cascadia</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Castle%20Combo" target="_blank" rel="noopener">Castle Combo</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/13" target="_blank" rel="noopener">Catan</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/478" target="_blank" rel="noopener">Citadels</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/178900" target="_blank" rel="noopener">Codenames</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/131357" target="_blank" rel="noopener">Coup</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/483" target="_blank" rel="noopener">Diplomacy</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/39856" target="_blank" rel="noopener">Dixit</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/370591" target="_blank" rel="noopener">Dorfromantik</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/316554" target="_blank" rel="noopener">Dune: Imperium</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/112686" target="_blank" rel="noopener">Epic Spell Wars: Duel at Mt. Skullzfyre</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Epic%20Spell%20Wars%20Rumble%20at%20Castle%20Tentakill" target="_blank" rel="noopener">Epic Spell Wars: Rumble at Castle Tentakill</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/199792" target="_blank" rel="noopener">Everdell</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/172225" target="_blank" rel="noopener">Exploding Kittens</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/385761" target="_blank" rel="noopener">Faraway</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/65244" target="_blank" rel="noopener">Forbidden Island</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/366013" target="_blank" rel="noopener">Heat: Pedal to the Metal</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/321608" target="_blank" rel="noopener">Hegemony</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/302520" target="_blank" rel="noopener">Hues and Cues</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=%C4%B0htil%C3%A2l" target="_blank" rel="noopener">İhtilal</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=%C4%B0nk%C4%B1l%C3%A2p" target="_blank" rel="noopener">İnkılap</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/148949" target="_blank" rel="noopener">Istanbul</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=IYE" target="_blank" rel="noopener">IYE</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/371340" target="_blank" rel="noopener">Karakum</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/107529" target="_blank" rel="noopener">Kingdom Builder</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/312484" target="_blank" rel="noopener">Lost Ruins of Arnak</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/143884" target="_blank" rel="noopener">Machi Koro</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/285774" target="_blank" rel="noopener">Marvel Champions</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/1406" target="_blank" rel="noopener">Monopoly</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/1927" target="_blank" rel="noopener">Munchkin</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Nidavellir%20Thingvellir" target="_blank" rel="noopener">Nidavellir: Thingvellir</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/30549" target="_blank" rel="noopener">Pandemic</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/266524" target="_blank" rel="noopener">PARKS</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/163412" target="_blank" rel="noopener">Patchwork</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Pixies" target="_blank" rel="noopener">Pixies</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Polis" target="_blank" rel="noopener">Polis</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/181" target="_blank" rel="noopener">Risk</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/237182" target="_blank" rel="noopener">Root</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/169786" target="_blank" rel="noopener">Scythe</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/188834" target="_blank" rel="noopener">Secret Hitler</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/338960" target="_blank" rel="noopener">Slay the Spire</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/255984" target="_blank" rel="noopener">Sleeping Gods</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/122522" target="_blank" rel="noopener">Smash Up</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/148228" target="_blank" rel="noopener">Splendor</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/147020" target="_blank" rel="noopener">Star Realms</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/332290" target="_blank" rel="noopener">Stardew Valley</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Sub%20Terra" target="_blank" rel="noopener">Sub Terra</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/133473" target="_blank" rel="noopener">Sushi Go!</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/1111" target="_blank" rel="noopener">Taboo</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/167791" target="_blank" rel="noopener">Terraforming Mars</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/84876" target="_blank" rel="noopener">The Castles of Burgundy</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/284083" target="_blank" rel="noopener">The Crew: The Quest for Planet Nine</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/182028" target="_blank" rel="noopener">Through the Ages</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/9209" target="_blank" rel="noopener">Ticket to Ride</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Truva" target="_blank" rel="noopener">Truva</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/268864" target="_blank" rel="noopener">Undaunted: Normandy</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/2223" target="_blank" rel="noopener">UNO</a>
+          <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Village%20Inn" target="_blank" rel="noopener">Village: Inn</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/183394" target="_blank" rel="noopener">Viticulture</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/266192" target="_blank" rel="noopener">Wingspan</a>
+          <a class="tag" href="https://boardgamegeek.com/boardgame/410201" target="_blank" rel="noopener">Wyrmspan</a>
         </div>
       </div>
+    </section>
 
-      <h3 style="color: var(--primary-color); margin-top: 2rem; margin-bottom: 1rem;">
-        <i class="fas fa-book"></i> Literature & Fiction
-      </h3>
-      <div class="bookshelf-grid">
-        <div class="book-card">
-          <img src="images/IfOnAWintersNight_pic.jpg" alt="If on a Winter's Night a Traveler" class="book-cover"
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=If+on+a+Winters+Night'">
-          <p class="book-title">If on a Winter's Night a Traveler - Italo Calvino</p>
-        </div>
-        
-        <div class="book-card">
-          <img src="images/OfMiceAndMen_pic.jpg" alt="Of Mice and Men" class="book-cover"
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Of+Mice+and+Men'">
-          <p class="book-title">Of Mice and Men - John Steinbeck</p>
-        </div>
-        
-        <div class="book-card">
-          <img src="images/SilentHouse_pic.jpg" alt="Silent House" class="book-cover"
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Silent+House'">
-          <p class="book-title">Silent House - Orhan Pamuk</p>
-        </div>
-        
-        <div class="book-card">
-          <img src="images/Germinal_pic.jpg" alt="Germinal" class="book-cover"
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=Germinal'">
-          <p class="book-title">Germinal - Émile Zola</p>
-        </div>
-        
-        <div class="book-card">
-          <img src="images/The_Count_of_Monte_Cristo_pic.jpg" alt="The Count of Monte Cristo" class="book-cover"
-               onerror="this.src='https://via.placeholder.com/180x260/1e3a8a/ffffff?text=The+Count+of+Monte+Cristo'">
-          <p class="book-title">The Count of Monte Cristo - Alexandre Dumas</p>
-        </div>
-
-        <div class="book-card">
-          <img src="images/OSirada_pic.jpg" alt="O Sırada" class="book-cover">
-          <p class="book-title">O Sırada - Erman Çağlar</p>
-        </div>
-
-        <div class="book-card">
-          <img src="images/TheOvercoat_pic.jpg" alt="The Overcoat" class="book-cover">
-          <p class="book-title">The Overcoat - Nikolai Gogol</p>
-        </div>
-      </div>
-
-
-      <h2 class="section-title mt-4">Board Games</h2>
-      <p class="card-description mb-3">
-        Board games I have played, in alphabetical order. Each one links to its
-        <a href="https://boardgamegeek.com" target="_blank" rel="noopener">BoardGameGeek</a> page.
-      </p>
-      <div class="tags game-tags">
-        <a class="tag" href="https://boardgamegeek.com/boardgame/68448" target="_blank" rel="noopener">7 Wonders</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/103343" target="_blank" rel="noopener">A Game of Thrones: The Board Game</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Akropolis%20Athena" target="_blank" rel="noopener">Akropolis: Athena</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/6249" target="_blank" rel="noopener">Alhambra</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/230802" target="_blank" rel="noopener">Azul</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/3955" target="_blank" rel="noopener">BANG!</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/10547" target="_blank" rel="noopener">Betrayal at House on the Hill</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/224517" target="_blank" rel="noopener">Brass: Birmingham</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/822" target="_blank" rel="noopener">Carcassonne</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/50381" target="_blank" rel="noopener">Cards Against Humanity</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/263918" target="_blank" rel="noopener">Cartographers</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/295947" target="_blank" rel="noopener">Cascadia</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Castle%20Combo" target="_blank" rel="noopener">Castle Combo</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/13" target="_blank" rel="noopener">Catan</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/478" target="_blank" rel="noopener">Citadels</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/178900" target="_blank" rel="noopener">Codenames</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/131357" target="_blank" rel="noopener">Coup</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/483" target="_blank" rel="noopener">Diplomacy</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/39856" target="_blank" rel="noopener">Dixit</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/370591" target="_blank" rel="noopener">Dorfromantik</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/316554" target="_blank" rel="noopener">Dune: Imperium</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/112686" target="_blank" rel="noopener">Epic Spell Wars: Duel at Mt. Skullzfyre</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Epic%20Spell%20Wars%20Rumble%20at%20Castle%20Tentakill" target="_blank" rel="noopener">Epic Spell Wars: Rumble at Castle Tentakill</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/199792" target="_blank" rel="noopener">Everdell</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/172225" target="_blank" rel="noopener">Exploding Kittens</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/385761" target="_blank" rel="noopener">Faraway</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/65244" target="_blank" rel="noopener">Forbidden Island</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/366013" target="_blank" rel="noopener">Heat: Pedal to the Metal</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/321608" target="_blank" rel="noopener">Hegemony</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/302520" target="_blank" rel="noopener">Hues and Cues</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=%C4%B0htil%C3%A2l" target="_blank" rel="noopener">İhtilal</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=%C4%B0nk%C4%B1l%C3%A2p" target="_blank" rel="noopener">İnkılap</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/148949" target="_blank" rel="noopener">Istanbul</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=IYE" target="_blank" rel="noopener">IYE</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/371340" target="_blank" rel="noopener">Karakum</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/107529" target="_blank" rel="noopener">Kingdom Builder</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/312484" target="_blank" rel="noopener">Lost Ruins of Arnak</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/143884" target="_blank" rel="noopener">Machi Koro</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/285774" target="_blank" rel="noopener">Marvel Champions</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/1406" target="_blank" rel="noopener">Monopoly</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/1927" target="_blank" rel="noopener">Munchkin</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Nidavellir%20Thingvellir" target="_blank" rel="noopener">Nidavellir: Thingvellir</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/30549" target="_blank" rel="noopener">Pandemic</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/266524" target="_blank" rel="noopener">PARKS</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/163412" target="_blank" rel="noopener">Patchwork</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Pixies" target="_blank" rel="noopener">Pixies</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Polis" target="_blank" rel="noopener">Polis</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/181" target="_blank" rel="noopener">Risk</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/237182" target="_blank" rel="noopener">Root</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/169786" target="_blank" rel="noopener">Scythe</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/188834" target="_blank" rel="noopener">Secret Hitler</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/338960" target="_blank" rel="noopener">Slay the Spire</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/255984" target="_blank" rel="noopener">Sleeping Gods</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/122522" target="_blank" rel="noopener">Smash Up</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/148228" target="_blank" rel="noopener">Splendor</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/147020" target="_blank" rel="noopener">Star Realms</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/332290" target="_blank" rel="noopener">Stardew Valley</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Sub%20Terra" target="_blank" rel="noopener">Sub Terra</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/133473" target="_blank" rel="noopener">Sushi Go!</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/1111" target="_blank" rel="noopener">Taboo</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/167791" target="_blank" rel="noopener">Terraforming Mars</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/84876" target="_blank" rel="noopener">The Castles of Burgundy</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/284083" target="_blank" rel="noopener">The Crew: The Quest for Planet Nine</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/182028" target="_blank" rel="noopener">Through the Ages</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/9209" target="_blank" rel="noopener">Ticket to Ride</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Truva" target="_blank" rel="noopener">Truva</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/268864" target="_blank" rel="noopener">Undaunted: Normandy</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/2223" target="_blank" rel="noopener">UNO</a>
-        <a class="tag" href="https://boardgamegeek.com/geeksearch.php?action=search&amp;objecttype=boardgame&amp;q=Village%20Inn" target="_blank" rel="noopener">Village: Inn</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/183394" target="_blank" rel="noopener">Viticulture</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/266192" target="_blank" rel="noopener">Wingspan</a>
-        <a class="tag" href="https://boardgamegeek.com/boardgame/410201" target="_blank" rel="noopener">Wyrmspan</a>
-      </div>
-
-    </div>
-  </section>
+  </main>
 
   <!-- Footer -->
   <footer>
@@ -301,9 +308,6 @@
         <li><a href="/personal">Personal</a></li>
       </ul>
       <div class="footer-social">
-        <span class="social-icon no-copy" title="Email">
-          <i class="fas fa-envelope"></i>
-        </span>
         <a href="https://github.com/odulsuzkisafilm" target="_blank" class="social-icon" title="GitHub">
           <i class="fab fa-github"></i>
         </a>
@@ -314,7 +318,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=20261127"></script>
+  <script src="js/main.js?v=20261128"></script>
 </body>
 </html>
 

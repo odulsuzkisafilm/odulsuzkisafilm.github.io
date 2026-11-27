@@ -740,7 +740,7 @@ footer p {
 
 .bookshelf-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(105px, 1fr));
   gap: var(--spacing-md);
 }
 
@@ -750,7 +750,7 @@ footer p {
 
 .book-cover {
   width: 100%;
-  height: 200px;
+  aspect-ratio: 2 / 3;
   object-fit: cover;
   border-radius: var(--radius-md);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -763,7 +763,8 @@ footer p {
 
 .book-title {
   margin-top: var(--spacing-xs);
-  font-size: 0.85rem;
+  font-size: 0.8rem;
+  line-height: 1.4;
   color: var(--text-primary);
   font-weight: 500;
 }
@@ -833,9 +834,8 @@ footer p {
 
 .spotify-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: var(--spacing-md);
-  margin-top: var(--spacing-sm);
 }
 
 /* The iframe is a little taller than Spotify's 152px player on purpose:
@@ -955,11 +955,316 @@ footer p {
   }
   
   .bookshelf-grid {
-    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  
-  .book-cover {
-    height: 200px;
+}
+
+/* ===================================
+   Page layout: page title, numbered sections and rows.
+   Shared by the home, academic and personal pages.
+   =================================== */
+
+.page-head {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 0;
+}
+
+.page-head h1 {
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.02em;
+  margin-bottom: 1rem;
+}
+
+.page-lede {
+  max-width: 62ch;
+  margin-bottom: 1.1rem;
+  font-size: 1.1rem;
+}
+
+.jump {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.6rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.jump a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--primary-color);
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.jump a i {
+  font-size: 0.72em;
+  color: var(--accent-color);
+}
+
+.jump a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.page-main {
+  max-width: 1200px;
+  margin: 2.5rem auto 0;
+  padding: 0 2rem;
+}
+
+.page-section {
+  display: grid;
+  grid-template-columns: 220px minmax(0, 1fr);
+  gap: 2.5rem;
+  padding: 2.25rem 0;
+  border-top: 1px solid var(--border-color);
+  scroll-margin-top: 5rem;
+}
+
+.sec-head {
+  position: sticky;
+  top: 5.5rem;
+  align-self: start;
+}
+
+.sec-num {
+  display: block;
+  font-family: 'Bitcount Grid Single', var(--font-mono);
+  font-size: 2.1rem;
+  line-height: 1;
+  color: var(--accent-color);
+}
+
+.sec-head h2 {
+  margin: 0.35rem 0 0;
+  font-size: 1.55rem;
+  line-height: 1.2;
+}
+
+.sec-intro {
+  max-width: 78ch;
+  margin-bottom: 1.25rem;
+}
+
+/* Research interests (home) */
+
+.topics {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.75rem 2.75rem;
+}
+
+.topic h3 {
+  margin-bottom: 0.4rem;
+  font-size: 1.2rem;
+}
+
+.topic h3 i,
+.shelf-title i {
+  margin-right: 0.35rem;
+  font-size: 0.9em;
+  color: var(--accent-color);
+}
+
+.topic p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+/* Rows: a date on the left, an entry on the right */
+
+.rows {
+  list-style: none;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 175px minmax(0, 1fr);
+  gap: 1.5rem;
+  padding: 1rem 0;
+  border-top: 1px dashed var(--border-color);
+}
+
+.row:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.row:last-child {
+  padding-bottom: 0;
+}
+
+.row-date {
+  padding-top: 0.2rem;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+}
+
+.row-title {
+  margin-bottom: 0.25rem;
+  font-size: 1.2rem;
+}
+
+.row-place {
+  margin-left: 0.4rem;
+  font-family: var(--font-primary);
+  font-size: 0.88rem;
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-secondary);
+}
+
+.row p {
+  margin: 0;
+  font-size: 0.97rem;
+}
+
+.row a {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.row-title a {
+  color: inherit;
+  text-decoration-color: rgba(30, 58, 138, 0.3);
+  text-underline-offset: 4px;
+}
+
+.row-title a:hover {
+  color: var(--accent-color);
+  text-decoration-color: currentColor;
+}
+
+.row p.row-meta {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.row p.row-text {
+  margin-top: 0.55rem;
+}
+
+.row-list {
+  margin-top: 0.45rem;
+  list-style: none;
+  font-size: 0.95rem;
+}
+
+.row-list li {
+  position: relative;
+  padding-left: 1.1rem;
+  margin-bottom: 0.2rem;
+}
+
+.row-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.38rem;
+  height: 0.38rem;
+  background-color: var(--accent-color);
+}
+
+.row-list .row-list {
+  margin: 0.35rem 0 0.2rem;
+  font-size: 0.92rem;
+}
+
+.row-list .row-list li::before {
+  background-color: transparent;
+  border: 1px solid var(--accent-color);
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.6rem;
+  list-style: none;
+}
+
+.facts li {
+  padding: 0.15rem 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 999px;
+  background-color: var(--white);
+  font-size: 0.82rem;
+  color: var(--primary-color);
+}
+
+.rows-tight .row {
+  padding: 0.7rem 0;
+}
+
+.rows-tight .row:first-child {
+  padding-top: 0;
+}
+
+.rows-tight .row-date {
+  padding-top: 0.15rem;
+}
+
+/* Rows without a date column */
+
+.rows-plain .row {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+/* Bookshelf sub-headings (personal) */
+
+.shelf-title {
+  margin: 0 0 1rem;
+  font-size: 1.2rem;
+}
+
+.bookshelf-grid + .shelf-title {
+  margin-top: 2.25rem;
+}
+
+@media (max-width: 900px) {
+  .page-section {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .sec-head {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+  }
+
+  .sec-head h2 {
+    margin: 0;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-head,
+  .page-main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+  }
+
+  .page-head {
+    padding-top: 2.25rem;
+  }
+
+  .topics {
+    grid-template-columns: 1fr;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
   }
 }
 
