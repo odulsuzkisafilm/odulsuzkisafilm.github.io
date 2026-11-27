@@ -1,5 +1,5 @@
 // Personal Academic Website JavaScript
-// Author: Hamit Efe Çınar
+// Author: Efe Çınar
 
 document.addEventListener('DOMContentLoaded', function() {
   // Mobile menu toggle
@@ -163,3 +163,31 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 })();
 
+
+
+// Name pronunciation button: plays assets/efe-cinar-pronunciation.mp3 if it exists,
+// otherwise falls back to the browser's Turkish text-to-speech voice.
+(function() {
+  const button = document.querySelector('.pronounce-btn');
+  if (!button) return;
+
+  function speakFallback() {
+    if (!('speechSynthesis' in window)) return;
+    const utterance = new SpeechSynthesisUtterance('Efe Çınar');
+    utterance.lang = 'tr-TR';
+    utterance.rate = 0.85;
+    const turkishVoice = window.speechSynthesis.getVoices().find(function(v) {
+      return v.lang && v.lang.toLowerCase().indexOf('tr') === 0;
+    });
+    if (turkishVoice) utterance.voice = turkishVoice;
+    window.speechSynthesis.cancel();
+    window.speechSynthesis.speak(utterance);
+  }
+
+  if ('speechSynthesis' in window) window.speechSynthesis.getVoices();
+
+  button.addEventListener('click', function() {
+    const audio = new Audio('assets/efe-cinar-pronunciation.mp3');
+    audio.play().catch(speakFallback);
+  });
+})();
